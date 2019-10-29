@@ -1,0 +1,8 @@
+<form [formGroup]="tableFilterForm">
+    <div class="form-group">
+        <label for="filter-currency">Coin</label>
+        <select class="form-control" id="filter-currency" formControlName="coinId">
+            <option [value]="coin.id" *ngFor="let coin of coins">{{coin.name}} ({{coin.symbol}})</option>
+        </select>
+    </div>
+</form>

@@ -1,0 +1,15 @@
+:host {
+  .sort-toggle {
+    font-weight: bold;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    opacity: 0.5;
+    cursor: pointer;
+
+    &.active-sort {
+      opacity: 1;
+    }
+  }
+}

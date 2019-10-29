@@ -1,0 +1,33 @@
+<div class="row py-3">
+    <div class="col-3">
+        <app-filter></app-filter>
+    </div>
+    <div class="col-9">
+        <div id="tabs">
+            <div class="tabs-header">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <span class="nav-link"
+                              (click)="selectTab('chart')"
+                              [ngClass]="{'active': activeTab === 'chart'}">Chart</span>
+                    </li>
+                    <li class="nav-item">
+                        <span class="nav-link"
+                              (click)="selectTab('table')"
+                              [ngClass]="{'active': activeTab === 'table'}">Table</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="tabs-content py-3">
+                <ng-container *ngIf="coinsHistory.length">
+                    <app-chart *ngIf="activeTab === 'chart'"
+                               [coinsHistory]="coinsHistory"
+                               [currency]="activeCurrency"></app-chart>
+                    <app-table *ngIf="activeTab === 'table'"
+                               [coinsHistory]="coinsHistory"
+                               [currency]="activeCurrency"></app-table>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

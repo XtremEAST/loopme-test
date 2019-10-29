@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-auto">
+        <app-table-filter [coinsIds]="coinsIds"
+                          [activeCoinId]="activeCoinId"
+                          (idChanged)="onIdChange($event)"></app-table-filter>
+    </div>
+</div>
+<div class="row col">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Date
+                <span class="sort-toggle"
+                      *ngIf="sortKey !== 'timestamp' || directSort"
+                      [ngClass]="{'active-sort': sortKey === 'timestamp' && directSort}"
+                      (click)="sortResultsBy('timestamp')">&#8595;</span>
+                <span class="sort-toggle"
+                      *ngIf="sortKey === 'timestamp' && !directSort"
+                      [ngClass]="{'active-sort': sortKey === 'timestamp' && !directSort}"
+                      (click)="sortResultsBy('timestamp')">&#8593;</span>
+            </th>
+            <th>Price, {{currency}}
+                <span class="sort-toggle"
+                      *ngIf="sortKey !== 'price' || directSort"
+                      [ngClass]="{'active-sort': sortKey === 'price' && directSort}"
+                      (click)="sortResultsBy('price')">&#8595;</span>
+                <span class="sort-toggle"
+                      *ngIf="sortKey === 'price' && !directSort"
+                      [ngClass]="{'active-sort': sortKey === 'price' && !directSort}"
+                      (click)="sortResultsBy('price')">&#8593;</span>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr app-table-row *ngFor="let item of activeItemHistory" [item]="item"></tr>
+        </tbody>
+    </table>
+</div>
