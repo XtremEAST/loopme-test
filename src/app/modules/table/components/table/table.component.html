@@ -4,6 +4,9 @@
                           [activeCoinId]="activeCoinId"
                           (idChanged)="onIdChange($event)"></app-table-filter>
     </div>
+    <div class="col text-right">
+        <button class="btn btn-sm btn-outline-secondary" (click)="exportTable()">Export table to CSV</button>
+    </div>
 </div>
 <div class="row col">
     <table class="table">

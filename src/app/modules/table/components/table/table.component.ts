@@ -1,6 +1,7 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {ICoinHistoryItem} from '../../../../shared/models/i-coin-history-item';
 import {CoinHistoryItem} from '../../../../shared/models/coin-history-item';
+import {TableService} from '../../shared/services/table/table.service';
 
 @Component({
   selector: 'app-table',
@@ -18,7 +19,7 @@ export class TableComponent implements OnChanges {
   @Input() coinsHistory: ICoinHistoryItem[];
   @Input() currency: string;
 
-  constructor() {
+  constructor(private _tableService: TableService) {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -82,5 +83,9 @@ export class TableComponent implements OnChanges {
     });
 
     this.activeItemHistory = activeItemHistory;
+  }
+
+  exportTable(): void {
+    this._tableService.exportTableToCSV(this.activeItemHistory, this.currency, this.activeCoinId);
   }
 }
